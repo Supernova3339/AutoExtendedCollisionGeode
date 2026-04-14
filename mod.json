@@ -8,10 +8,19 @@
 	},
 	"id": "superdev.auto_extended_collision",
 	"name": "Auto Extended Collision",
-	"version": "v1.0.0",
-	"developers": ["Supernova3339"],
+	"version": "v1.0.1",
+	"developers": [
+		"Supernova3339"
+	],
 	"description": "Activate extended collissions automatically",
-	"tags": ["editor", "utility", "offline"],
+	"dependencies": {
+		"geode.node-ids": ">=1.0.0"
+	},
+	"tags": [
+		"editor",
+		"utility",
+		"offline"
+	],
 	"settings": {
 		"enabled": {
 			"name": "Enabled",
