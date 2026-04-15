@@ -90,48 +90,48 @@ class $modify(ProEditorPauseLayer, EditorPauseLayer) {
         auto objGlow = Loader::get()->isModLoaded("undefined0.object_glow_in_editor");
         auto imp = Loader::get()->isModLoaded("razoom.improved_playtest");
 
-        if (!objGlow && !imp) {
-            menu->setScale(.95f);
-            menu->setPositionY(menu->getPositionY() - 10.f);
-            menu->setPositionX(menu->getPositionX() - 8.f);
-        }
+        // if (!objGlow && !imp) {
+        //     menu->setScale(.95f);
+        //     menu->setPositionY(menu->getPositionY() - 10.f);
+        //     menu->setPositionX(menu->getPositionX() - 8.f);
+        // }
 
-        auto toggler = GameToolbox::createToggleButton(
-            "Auto Extended Collision",
-            menu_selector(ProEditorPauseLayer::onToggle),
-            getSetting<"enabled", bool>(),
-            static_cast<CCMenu*>(menu), { imp ? 23.5f : 19.159f, imp ? 267.962f : 270.962f },
-            this, this,
-            .55f, .42f, 85.f,
-            { imp ? 2.f : 5.f, 0.f },
-            "bigFont.fnt",
-            false, 0, nullptr
-        );
-        
-        toggler->setID("toggler"_spr);
+        // auto toggler = GameToolbox::createToggleButton(
+        //     "Auto Extended Collision",
+        //     menu_selector(ProEditorPauseLayer::onToggle),
+        //     getSetting<"enabled", bool>(),
+        //     static_cast<CCMenu*>(menu), { imp ? 23.5f : 19.159f, imp ? 267.962f : 270.962f },
+        //     this, this,
+        //     .55f, .42f, 85.f,
+        //     { imp ? 2.f : 5.f, 0.f },
+        //     "bigFont.fnt",
+        //     false, 0, nullptr
+        // );
 
-        if (objGlow) {
-            toggler->setPositionY(toggler->getPositionY() - 21);
-        }
+        // toggler->setID("toggler"_spr);
 
-        if (auto lbl = getChildByType<CCLabelBMFont*>(-1)) {
-            lbl->removeFromParent();
-            lbl->setAnchorPoint({0.f, 0.5f});
-            lbl->setID("label"_spr);
-            lbl->setPosition(toggler->getPosition() + CCPoint{15, 0});
+        // if (objGlow) {
+        //     toggler->setPositionY(toggler->getPositionY() - 21);
+        // }
 
-            menu->addChild(lbl);
+        // if (auto lbl = getChildByType<CCLabelBMFont*>(-1)) {
+        //     lbl->removeFromParent();
+        //     lbl->setAnchorPoint({0.f, 0.5f});
+        //     lbl->setID("label"_spr);
+        //     lbl->setPosition(toggler->getPosition() + CCPoint{15, 0});
 
-            m_fields->toggle = toggler;
+        //     menu->addChild(lbl);
 
-            auto btn = Button::createWithSpriteFrameName("GJ_optionsBtn_001.png", [](Button*) {
-                openSettingsPopup(Mod::get(), false);
-            });
-            btn->setPosition(lbl->getPosition() + CCPoint{lbl->getScaledContentWidth() + 15, 0});
-            btn->setScale(0.385f);
-            
-            menu->addChild(btn);
-        }
+        //     m_fields->toggle = toggler;
+
+        //     auto btn = Button::createWithSpriteFrameName("GJ_optionsBtn_001.png", [](Button*) {
+        //         openSettingsPopup(Mod::get(), false);
+        //     });
+        //     btn->setPosition(lbl->getPosition() + CCPoint{lbl->getScaledContentWidth() + 15, 0});
+        //     btn->setScale(0.385f);
+
+        //     menu->addChild(btn);
+        // }
 
         if (!objGlow) {
             auto infoMenu = getChildByID("info-menu");
@@ -143,23 +143,23 @@ class $modify(ProEditorPauseLayer, EditorPauseLayer) {
             lengthLabel->setPositionY(lengthLabel->getPositionY() + 3.f);
         }
 
-        if (objGlow || imp) {
-            auto countTotal = 0;
-            auto first = true;
+        // if (objGlow || imp) {
+        //     auto countTotal = 0;
+        //     auto first = true;
 
-            for (auto node : menu->getChildrenExt()) {
-                node->setPositionY(node->getPositionY() - ((11 + static_cast<int>(imp)) - countTotal) * 1.65f);
-                
-                if (imp && first) {
-                    countTotal++;
-                    first = false;
-                }
+        //     for (auto node : menu->getChildrenExt()) {
+        //         node->setPositionY(node->getPositionY() - ((11 + static_cast<int>(imp)) - countTotal) * 1.65f);
 
-                if (typeinfo_cast<CCLabelBMFont*>(node)) {
-                    countTotal++;
-                }
-            }
-        }
+        //         if (imp && first) {
+        //             countTotal++;
+        //             first = false;
+        //         }
+
+        //         if (typeinfo_cast<CCLabelBMFont*>(node)) {
+        //             countTotal++;
+        //         }
+        //     }
+        // }
 
         return true;
     }
